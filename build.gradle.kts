@@ -53,8 +53,8 @@ tasks {
                                 .withExcludes("schema_version")
                                 .withInputSchema("public"))
                         .withTarget(Target()
-                                .withPackageName("codes.foobar.cv.jooq.generated")
-                                .withDirectory("build/classes/java/main")))
+                                .withPackageName("org.jooq.codes.foobar.cv")
+                                .withDirectory("src/main/kotlin")))
 
         GenerationTool.generate(configuration)
     }
@@ -81,6 +81,7 @@ dependencies {
     compile("org.slf4j:slf4j-simple:1.7.25")
     compile("com.google.code.gson:gson:2.8.2")
     compile("com.zaxxer:HikariCP:2.7.1")
+    compile("org.jooq:jooq:3.10.0")
     compile("org.flywaydb:flyway-core:4.2.0")
     compile("com.h2database:h2:1.4.196")
 }
