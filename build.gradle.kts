@@ -27,7 +27,7 @@ buildscript {
 }
 
 configure<FlywayExtension> {
-    url = "jdbc:h2:./jooq_db"
+    url = "jdbc:h2:./cv_db"
     user = "sa"
     password = ""
     schemas = arrayOf("public")
@@ -43,14 +43,14 @@ tasks {
         val configuration = Configuration()
                 .withJdbc(Jdbc()
                         .withDriver("org.h2.Driver")
-                        .withUrl("jdbc:h2:./jooq_db")
+                        .withUrl("jdbc:h2:./cv_db")
                         .withUser("sa")
                         .withPassword(""))
                 .withGenerator(Generator()
                         .withDatabase(Database()
                                 .withName("org.jooq.util.h2.H2Database")
                                 .withIncludes(".*")
-                                .withExcludes("")
+                                .withExcludes("schema_version")
                                 .withInputSchema("public"))
                         .withTarget(Target()
                                 .withPackageName("codes.foobar.cv.jooq.generated")
