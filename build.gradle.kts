@@ -40,21 +40,26 @@ tasks {
     val jooqCodeGen by creating(DefaultTask::class) {
         dependsOn(tasks["flywayMigrate"])
 
-        val configuration = Configuration()
-                .withJdbc(Jdbc()
-                        .withDriver("org.h2.Driver")
-                        .withUrl("jdbc:h2:./cv_db")
-                        .withUser("sa")
-                        .withPassword(""))
-                .withGenerator(Generator()
-                        .withDatabase(Database()
-                                .withName("org.jooq.util.h2.H2Database")
-                                .withIncludes(".*")
-                                .withExcludes("schema_version")
-                                .withInputSchema("public"))
-                        .withTarget(Target()
-                                .withPackageName("org.jooq.codes.foobar.cv")
-                                .withDirectory("src/main/kotlin")))
+        val configuration = Configuration().apply {
+            jdbc = Jdbc().apply {
+                driver = "org.h2.Driver"
+                url = "jdbc:h2:./cv_db"
+                user = "sa"
+                password = ""
+            }
+            generator = Generator().apply {
+                database = Database().apply {
+                    name = "org.jooq.util.h2.H2Database"
+                    includes = ".*"
+                    excludes = "schema_version"
+                    inputSchema = "public"
+                }
+                target = Target().apply {
+                    packageName = "org.jooq.codes.foobar.cv"
+                    directory = "src/main/kotlin"
+                }
+            }
+        }
 
         GenerationTool.generate(configuration)
     }
