@@ -1,2 +1,4 @@
 .idea/
 *.iml
+
+cv_db.*.db
