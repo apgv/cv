@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Index;
 import org.jooq.Name;
@@ -39,7 +40,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Employer extends TableImpl<EmployerRecord> {
 
-    private static final long serialVersionUID = 479838317;
+    private static final long serialVersionUID = -1014539812;
 
     /**
      * The reference instance of <code>public.EMPLOYER</code>
@@ -60,19 +61,24 @@ public class Employer extends TableImpl<EmployerRecord> {
     public final TableField<EmployerRecord, Integer> ID = createField("ID", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
 
     /**
+     * The column <code>public.EMPLOYER.PERSON_ID</code>.
+     */
+    public final TableField<EmployerRecord, Integer> PERSON_ID = createField("PERSON_ID", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
      * The column <code>public.EMPLOYER.NAME</code>.
      */
     public final TableField<EmployerRecord, String> NAME = createField("NAME", org.jooq.impl.SQLDataType.VARCHAR(40).nullable(false), this, "");
 
     /**
-     * The column <code>public.EMPLOYER.STARTED</code>.
+     * The column <code>public.EMPLOYER.START_DATE</code>.
      */
-    public final TableField<EmployerRecord, Date> STARTED = createField("STARTED", org.jooq.impl.SQLDataType.DATE.nullable(false), this, "");
+    public final TableField<EmployerRecord, Date> START_DATE = createField("START_DATE", org.jooq.impl.SQLDataType.DATE.nullable(false), this, "");
 
     /**
-     * The column <code>public.EMPLOYER.ENDED</code>.
+     * The column <code>public.EMPLOYER.END_DATE</code>.
      */
-    public final TableField<EmployerRecord, Date> ENDED = createField("ENDED", org.jooq.impl.SQLDataType.DATE.nullable(false), this, "");
+    public final TableField<EmployerRecord, Date> END_DATE = createField("END_DATE", org.jooq.impl.SQLDataType.DATE.nullable(false), this, "");
 
     /**
      * Create a <code>public.EMPLOYER</code> table reference
@@ -116,7 +122,7 @@ public class Employer extends TableImpl<EmployerRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PRIMARY_KEY_7);
+        return Arrays.<Index>asList(Indexes.CONSTRAINT_INDEX_7, Indexes.PRIMARY_KEY_7);
     }
 
     /**
@@ -141,6 +147,14 @@ public class Employer extends TableImpl<EmployerRecord> {
     @Override
     public List<UniqueKey<EmployerRecord>> getKeys() {
         return Arrays.<UniqueKey<EmployerRecord>>asList(Keys.CONSTRAINT_7);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ForeignKey<EmployerRecord, ?>> getReferences() {
+        return Arrays.<ForeignKey<EmployerRecord, ?>>asList(Keys.CONSTRAINT_75);
     }
 
     /**

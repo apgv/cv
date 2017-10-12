@@ -16,8 +16,8 @@ fun main(args: Array<String>) {
         create.select().from(EMPLOYER).fetch().forEach {
             println("ID=${it[EMPLOYER.ID]}, " +
                     "NAME=${it[EMPLOYER.NAME]}, " +
-                    "STARTED=${it[EMPLOYER.STARTED]}, " +
-                    "ENDED=${it[EMPLOYER.ENDED]}")
+                    "START_DATE=${it[EMPLOYER.START_DATE]}, " +
+                    "END_DATE=${it[EMPLOYER.END_DATE]}")
         }
 
         response.type("application/json")

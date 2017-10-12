@@ -8,7 +8,12 @@ import javax.annotation.Generated;
 
 import org.jooq.Index;
 import org.jooq.OrderField;
+import org.jooq.codes.foobar.cv.tables.Education;
 import org.jooq.codes.foobar.cv.tables.Employer;
+import org.jooq.codes.foobar.cv.tables.Experience;
+import org.jooq.codes.foobar.cv.tables.Expertise;
+import org.jooq.codes.foobar.cv.tables.Person;
+import org.jooq.codes.foobar.cv.tables.Project;
 import org.jooq.impl.AbstractKeys;
 
 
@@ -29,13 +34,33 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index CONSTRAINT_INDEX_9 = Indexes0.CONSTRAINT_INDEX_9;
+    public static final Index PRIMARY_KEY_9 = Indexes0.PRIMARY_KEY_9;
+    public static final Index CONSTRAINT_INDEX_7 = Indexes0.CONSTRAINT_INDEX_7;
     public static final Index PRIMARY_KEY_7 = Indexes0.PRIMARY_KEY_7;
+    public static final Index CONSTRAINT_INDEX_1 = Indexes0.CONSTRAINT_INDEX_1;
+    public static final Index PRIMARY_KEY_1 = Indexes0.PRIMARY_KEY_1;
+    public static final Index CONSTRAINT_INDEX_A = Indexes0.CONSTRAINT_INDEX_A;
+    public static final Index PRIMARY_KEY_A = Indexes0.PRIMARY_KEY_A;
+    public static final Index PRIMARY_KEY_8 = Indexes0.PRIMARY_KEY_8;
+    public static final Index CONSTRAINT_INDEX_18 = Indexes0.CONSTRAINT_INDEX_18;
+    public static final Index PRIMARY_KEY_18 = Indexes0.PRIMARY_KEY_18;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Indexes0 extends AbstractKeys {
+        public static Index CONSTRAINT_INDEX_9 = createIndex("CONSTRAINT_INDEX_9", Education.EDUCATION, new OrderField[] { Education.EDUCATION.PERSON_ID }, false);
+        public static Index PRIMARY_KEY_9 = createIndex("PRIMARY_KEY_9", Education.EDUCATION, new OrderField[] { Education.EDUCATION.ID }, true);
+        public static Index CONSTRAINT_INDEX_7 = createIndex("CONSTRAINT_INDEX_7", Employer.EMPLOYER, new OrderField[] { Employer.EMPLOYER.PERSON_ID }, false);
         public static Index PRIMARY_KEY_7 = createIndex("PRIMARY_KEY_7", Employer.EMPLOYER, new OrderField[] { Employer.EMPLOYER.ID }, true);
+        public static Index CONSTRAINT_INDEX_1 = createIndex("CONSTRAINT_INDEX_1", Experience.EXPERIENCE, new OrderField[] { Experience.EXPERIENCE.PERSON_ID }, false);
+        public static Index PRIMARY_KEY_1 = createIndex("PRIMARY_KEY_1", Experience.EXPERIENCE, new OrderField[] { Experience.EXPERIENCE.ID }, true);
+        public static Index CONSTRAINT_INDEX_A = createIndex("CONSTRAINT_INDEX_A", Expertise.EXPERTISE, new OrderField[] { Expertise.EXPERTISE.PERSON_ID }, false);
+        public static Index PRIMARY_KEY_A = createIndex("PRIMARY_KEY_A", Expertise.EXPERTISE, new OrderField[] { Expertise.EXPERTISE.ID }, true);
+        public static Index PRIMARY_KEY_8 = createIndex("PRIMARY_KEY_8", Person.PERSON, new OrderField[] { Person.PERSON.ID }, true);
+        public static Index CONSTRAINT_INDEX_18 = createIndex("CONSTRAINT_INDEX_18", Project.PROJECT, new OrderField[] { Project.PROJECT.EMPLOYER_ID }, false);
+        public static Index PRIMARY_KEY_18 = createIndex("PRIMARY_KEY_18", Project.PROJECT, new OrderField[] { Project.PROJECT.ID }, true);
     }
 }

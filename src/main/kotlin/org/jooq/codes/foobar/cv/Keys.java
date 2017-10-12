@@ -6,10 +6,21 @@ package org.jooq.codes.foobar.cv;
 
 import javax.annotation.Generated;
 
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.UniqueKey;
+import org.jooq.codes.foobar.cv.tables.Education;
 import org.jooq.codes.foobar.cv.tables.Employer;
+import org.jooq.codes.foobar.cv.tables.Experience;
+import org.jooq.codes.foobar.cv.tables.Expertise;
+import org.jooq.codes.foobar.cv.tables.Person;
+import org.jooq.codes.foobar.cv.tables.Project;
+import org.jooq.codes.foobar.cv.tables.records.EducationRecord;
 import org.jooq.codes.foobar.cv.tables.records.EmployerRecord;
+import org.jooq.codes.foobar.cv.tables.records.ExperienceRecord;
+import org.jooq.codes.foobar.cv.tables.records.ExpertiseRecord;
+import org.jooq.codes.foobar.cv.tables.records.PersonRecord;
+import org.jooq.codes.foobar.cv.tables.records.ProjectRecord;
 import org.jooq.impl.AbstractKeys;
 
 
@@ -31,28 +42,61 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<EducationRecord, Integer> IDENTITY_EDUCATION = Identities0.IDENTITY_EDUCATION;
     public static final Identity<EmployerRecord, Integer> IDENTITY_EMPLOYER = Identities0.IDENTITY_EMPLOYER;
+    public static final Identity<ExperienceRecord, Integer> IDENTITY_EXPERIENCE = Identities0.IDENTITY_EXPERIENCE;
+    public static final Identity<ExpertiseRecord, Integer> IDENTITY_EXPERTISE = Identities0.IDENTITY_EXPERTISE;
+    public static final Identity<PersonRecord, Integer> IDENTITY_PERSON = Identities0.IDENTITY_PERSON;
+    public static final Identity<ProjectRecord, Integer> IDENTITY_PROJECT = Identities0.IDENTITY_PROJECT;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<EducationRecord> CONSTRAINT_9 = UniqueKeys0.CONSTRAINT_9;
     public static final UniqueKey<EmployerRecord> CONSTRAINT_7 = UniqueKeys0.CONSTRAINT_7;
+    public static final UniqueKey<ExperienceRecord> CONSTRAINT_1 = UniqueKeys0.CONSTRAINT_1;
+    public static final UniqueKey<ExpertiseRecord> CONSTRAINT_A = UniqueKeys0.CONSTRAINT_A;
+    public static final UniqueKey<PersonRecord> CONSTRAINT_8 = UniqueKeys0.CONSTRAINT_8;
+    public static final UniqueKey<ProjectRecord> CONSTRAINT_18 = UniqueKeys0.CONSTRAINT_18;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<EducationRecord, PersonRecord> CONSTRAINT_94 = ForeignKeys0.CONSTRAINT_94;
+    public static final ForeignKey<EmployerRecord, PersonRecord> CONSTRAINT_75 = ForeignKeys0.CONSTRAINT_75;
+    public static final ForeignKey<ExperienceRecord, PersonRecord> CONSTRAINT_17 = ForeignKeys0.CONSTRAINT_17;
+    public static final ForeignKey<ExpertiseRecord, PersonRecord> CONSTRAINT_AE = ForeignKeys0.CONSTRAINT_AE;
+    public static final ForeignKey<ProjectRecord, EmployerRecord> CONSTRAINT_185 = ForeignKeys0.CONSTRAINT_185;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Identities0 extends AbstractKeys {
+        public static Identity<EducationRecord, Integer> IDENTITY_EDUCATION = createIdentity(Education.EDUCATION, Education.EDUCATION.ID);
         public static Identity<EmployerRecord, Integer> IDENTITY_EMPLOYER = createIdentity(Employer.EMPLOYER, Employer.EMPLOYER.ID);
+        public static Identity<ExperienceRecord, Integer> IDENTITY_EXPERIENCE = createIdentity(Experience.EXPERIENCE, Experience.EXPERIENCE.ID);
+        public static Identity<ExpertiseRecord, Integer> IDENTITY_EXPERTISE = createIdentity(Expertise.EXPERTISE, Expertise.EXPERTISE.ID);
+        public static Identity<PersonRecord, Integer> IDENTITY_PERSON = createIdentity(Person.PERSON, Person.PERSON.ID);
+        public static Identity<ProjectRecord, Integer> IDENTITY_PROJECT = createIdentity(Project.PROJECT, Project.PROJECT.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<EducationRecord> CONSTRAINT_9 = createUniqueKey(Education.EDUCATION, "CONSTRAINT_9", Education.EDUCATION.ID);
         public static final UniqueKey<EmployerRecord> CONSTRAINT_7 = createUniqueKey(Employer.EMPLOYER, "CONSTRAINT_7", Employer.EMPLOYER.ID);
+        public static final UniqueKey<ExperienceRecord> CONSTRAINT_1 = createUniqueKey(Experience.EXPERIENCE, "CONSTRAINT_1", Experience.EXPERIENCE.ID);
+        public static final UniqueKey<ExpertiseRecord> CONSTRAINT_A = createUniqueKey(Expertise.EXPERTISE, "CONSTRAINT_A", Expertise.EXPERTISE.ID);
+        public static final UniqueKey<PersonRecord> CONSTRAINT_8 = createUniqueKey(Person.PERSON, "CONSTRAINT_8", Person.PERSON.ID);
+        public static final UniqueKey<ProjectRecord> CONSTRAINT_18 = createUniqueKey(Project.PROJECT, "CONSTRAINT_18", Project.PROJECT.ID);
+    }
+
+    private static class ForeignKeys0 extends AbstractKeys {
+        public static final ForeignKey<EducationRecord, PersonRecord> CONSTRAINT_94 = createForeignKey(org.jooq.codes.foobar.cv.Keys.CONSTRAINT_8, Education.EDUCATION, "CONSTRAINT_94", Education.EDUCATION.PERSON_ID);
+        public static final ForeignKey<EmployerRecord, PersonRecord> CONSTRAINT_75 = createForeignKey(org.jooq.codes.foobar.cv.Keys.CONSTRAINT_8, Employer.EMPLOYER, "CONSTRAINT_75", Employer.EMPLOYER.PERSON_ID);
+        public static final ForeignKey<ExperienceRecord, PersonRecord> CONSTRAINT_17 = createForeignKey(org.jooq.codes.foobar.cv.Keys.CONSTRAINT_8, Experience.EXPERIENCE, "CONSTRAINT_17", Experience.EXPERIENCE.PERSON_ID);
+        public static final ForeignKey<ExpertiseRecord, PersonRecord> CONSTRAINT_AE = createForeignKey(org.jooq.codes.foobar.cv.Keys.CONSTRAINT_8, Expertise.EXPERTISE, "CONSTRAINT_AE", Expertise.EXPERTISE.PERSON_ID);
+        public static final ForeignKey<ProjectRecord, EmployerRecord> CONSTRAINT_185 = createForeignKey(org.jooq.codes.foobar.cv.Keys.CONSTRAINT_7, Project.PROJECT, "CONSTRAINT_185", Project.PROJECT.EMPLOYER_ID);
     }
 }

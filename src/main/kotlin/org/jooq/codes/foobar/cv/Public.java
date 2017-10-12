@@ -12,7 +12,12 @@ import javax.annotation.Generated;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
+import org.jooq.codes.foobar.cv.tables.Education;
 import org.jooq.codes.foobar.cv.tables.Employer;
+import org.jooq.codes.foobar.cv.tables.Experience;
+import org.jooq.codes.foobar.cv.tables.Expertise;
+import org.jooq.codes.foobar.cv.tables.Person;
+import org.jooq.codes.foobar.cv.tables.Project;
 import org.jooq.impl.SchemaImpl;
 
 
@@ -29,7 +34,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 76532885;
+    private static final long serialVersionUID = -1664794025;
 
     /**
      * The reference instance of <code>public</code>
@@ -37,9 +42,34 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
+     * The table <code>public.EDUCATION</code>.
+     */
+    public final Education EDUCATION = org.jooq.codes.foobar.cv.tables.Education.EDUCATION;
+
+    /**
      * The table <code>public.EMPLOYER</code>.
      */
     public final Employer EMPLOYER = org.jooq.codes.foobar.cv.tables.Employer.EMPLOYER;
+
+    /**
+     * The table <code>public.EXPERIENCE</code>.
+     */
+    public final Experience EXPERIENCE = org.jooq.codes.foobar.cv.tables.Experience.EXPERIENCE;
+
+    /**
+     * The table <code>public.EXPERTISE</code>.
+     */
+    public final Expertise EXPERTISE = org.jooq.codes.foobar.cv.tables.Expertise.EXPERTISE;
+
+    /**
+     * The table <code>public.PERSON</code>.
+     */
+    public final Person PERSON = org.jooq.codes.foobar.cv.tables.Person.PERSON;
+
+    /**
+     * The table <code>public.PROJECT</code>.
+     */
+    public final Project PROJECT = org.jooq.codes.foobar.cv.tables.Project.PROJECT;
 
     /**
      * No further instances allowed
@@ -66,6 +96,11 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Employer.EMPLOYER);
+            Education.EDUCATION,
+            Employer.EMPLOYER,
+            Experience.EXPERIENCE,
+            Expertise.EXPERTISE,
+            Person.PERSON,
+            Project.PROJECT);
     }
 }
